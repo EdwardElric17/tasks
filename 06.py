@@ -11,7 +11,7 @@ with open('06.txt', 'r') as inf:
     gty = set(mas1)
     for i in range(8):
         for j in mas1:
-            mas += mas1[i]
+            mas += j[i]
         set_mas = set(mas)
         for item in set_mas:
             maxi = mas.count(item)
