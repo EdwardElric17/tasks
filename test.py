@@ -1,10 +1,10 @@
-m = []
-a = ''
-b = ''
-g = 0
-h = 0
-with open('05.txt', 'r') as inf:
+mas1 = []
+mas = ''
+point = ''
+lst = ''
+maxi = ''
+max_count = 0
+with open('06.txt', 'r') as inf:
     for line in inf:
-        m = []
-        m += (line.strip().split())
-        print(m)
+        mas1.append(line.strip())
+print(mas1)
