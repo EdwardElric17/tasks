@@ -1,7 +1,9 @@
+from sympy import powsimp
+
+
 point = ''
 def search(start, end, lst, sum):
-    global point
-    for i in range(start, end):
+    for i in range(start + 1, end):
         for j in range(1, end):
             if int(lst[i]) + int(lst[i + j]) == sum:
                 point = str(lst[i] + ', ' + lst[i+j])
@@ -11,4 +13,4 @@ def search(start, end, lst, sum):
     return point
 with open("04.txt", 'r') as inf:
     lst = inf.readline().split(', ')
-print(search(0, len(lst)-1, lst, 77))
+print(search(-1, len(lst)-1, lst, 77))
