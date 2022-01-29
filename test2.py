@@ -1,6 +1,3 @@
-from sympy import powsimp
-
-
 point = ''
 def search(start, end, lst, sum):
     global point
