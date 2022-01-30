@@ -1,49 +1,28 @@
-mas = [[0 for i in range(50)] for j in range(6)]
-size = ''
-for lst in range(10):
-    a = 0
-    b = 0
-    x = 0
-    x_shift = 0
-    y = 0
-    y_shift = 0
-    m_y = []
-    m_x = []
-    m = (input().split())
-    if m[0] == 'rect':
-        size = m[1]
-        if len(size) == 3:
-            a = int(size[0])
-            b = int(size[2])
-        else:
-            if size[1] == 'x':
-                a = int(size[0])
-                b = int(size[2] + size[3])
-            elif size[2] == 'x': 
-                a = int(size[0] + size[1])
-                b = int(size[3])
-        for i in range(b):
-            for j in range(a):
-                mas[i][j] = 1
-        for i in range(6):
-            print(mas[i])
-    if m[0] == 'rotate' and m[1] == 'row':
-        y = int(m[2][2])
-        y_shift = int(m[4])
-        m_y = mas[y]
-        mas[y] = m_y[-y_shift:] + m_y[:-y_shift]
-        for i in range(6):
-            print(mas[i])
-    if m[0] == 'rotate' and m[1] == 'column':
-        if len(m[2]) == 3:
-            x = int(m[2][2])
-        else:
-            x = int(m[2][2] + m[2][3])
-        x_shift = int(m[4])
-        for i in range(6):
-            m_x.append(mas[i][x])
-        print(m_x)
-        for i in range(6):
-            mas[i][x] = m_x[i - x_shift]
-        for i in range(6):
-            print(mas[i])
+di = ['Faerun', 'Norrath', 'Tristram', 'AlphaCentauri', 'Arbre', 'Snowdin', 'Tambi', 'Straylight']
+ti = []
+mas = []
+length = 0
+long = 0
+with open('08.txt', 'r') as inf:
+    for line in inf:
+        mas.append(line.strip().split())
+print(mas)
+for i in di:
+    ti = []
+    length = 0
+    for n in di:
+        ti.append(n)
+    ti.remove(i)
+    for j in ti:
+        for k in range(len(mas)):
+            if (mas[k][0] == i and mas[k][2] == j):
+                length += int(mas[k][4])
+                i = mas[k][2]
+                break
+            if (mas[k][2] == i and mas[k][4] == j):
+                length += int(mas[k][4])
+                i = mas[k][0]
+                break
+    if length > long:
+        long = length
+print(long)
